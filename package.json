@@ -1,5 +1,26 @@
 {
   "name": "frontends-with-module-federation",
   "version": "0.0.0",
-  "license": "MIT"
+  "license": "MIT",
+  "private": true,
+  "workspaces": {
+    "packages": [
+      "packages/*"
+    ]
+  },
+  "scripts": {
+    "bootstrap": "lerna bootstrap --ignore-scripts",
+    "start": "lerna run --scope @frontends-with-module-federation/* --parallel start",
+    "build": "lerna run --scope @frontends-with-module-federation/* build",
+    "serve": "lerna run --scope @frontends-with-module-federation/* --parallel serve",
+    "clean": "lerna run --scope @frontends-with-module-federation/* --parallel clean",
+    "prettier": "prettier --write \"**/*.{js,json,md,ts,tsx}\"",
+    "prettier:check": "prettier --list-different \"**/*.{js,json,md,ts,tsx}\""
+  },
+  "devDependencies": {
+    "husky": "^7.0.1",
+    "lerna": "^4.0.0",
+    "prettier": "^2.3.2",
+    "pretty-quick": "^3.1.1"
+  }
 }
