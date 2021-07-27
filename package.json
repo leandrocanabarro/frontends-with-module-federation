@@ -10,14 +10,15 @@
   },
   "scripts": {
     "bootstrap": "lerna bootstrap --ignore-scripts",
-    "start": "lerna run --scope @frontends-with-module-federation/* --parallel start",
-    "build": "lerna run --scope @frontends-with-module-federation/* build",
-    "serve": "lerna run --scope @frontends-with-module-federation/* --parallel serve",
-    "clean": "lerna run --scope @frontends-with-module-federation/* --parallel clean",
+    "build": "yarn workspaces run build",
+    "serve": "wsrun --parallel serve",
+    "start": "concurrently \"wsrun --parallel start\" \"wsrun --parallel serve\"",
     "prettier": "prettier --write \"**/*.{js,json,md,ts,tsx}\"",
     "prettier:check": "prettier --list-different \"**/*.{js,json,md,ts,tsx}\""
   },
   "devDependencies": {
+    "concurrently": "^5.1.0",
+    "wsrun": "^5.2.0",
     "husky": "^7.0.1",
     "lerna": "^4.0.0",
     "prettier": "^2.3.2",
